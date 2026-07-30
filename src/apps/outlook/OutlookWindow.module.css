@@ -1,0 +1,87 @@
+.body {
+  flex: 1;
+  overflow: auto;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  background: var(--xp-window-bg);
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--xp-menubar-border);
+  font-size: 11px;
+  color: #444;
+}
+
+.form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  gap: 8px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+.fieldLabel {
+  width: 56px;
+  font-size: 11px;
+  color: #444;
+  flex-shrink: 0;
+}
+
+.fieldInput {
+  flex: 1;
+  border: none;
+  font-size: 12px;
+  font-family: inherit;
+  padding: 3px 2px;
+}
+
+.fieldInput:focus {
+  outline: 1px solid #7f9db9;
+}
+
+.messageArea {
+  flex: 1;
+  border: 1px solid var(--xp-sunken-border);
+  font-size: 12px;
+  font-family: inherit;
+  padding: 6px;
+  resize: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sendBtn {
+  padding: 5px 14px;
+  font-size: 11px;
+  border: 1px solid var(--xp-sunken-border);
+  border-radius: 3px;
+  background: var(--xp-window-bg);
+  cursor: pointer;
+}
+
+.sendBtn:hover {
+  filter: brightness(1.05);
+}
+
+.status {
+  font-size: 11px;
+  color: #444;
+}
+
+.status a {
+  color: #1958d0;
+}

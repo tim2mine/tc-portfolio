@@ -1,0 +1,45 @@
+.body {
+  flex: 1;
+  overflow: auto;
+  background: #fff;
+  font-size: 12px;
+  color: #222;
+}
+
+.scanBar {
+  padding: 10px 14px;
+  background: var(--xp-window-bg);
+  border-bottom: 1px solid var(--xp-menubar-border);
+  font-size: 11px;
+  color: #444;
+}
+
+.list {
+  padding: 6px 0;
+}
+
+.file {
+  padding: 8px 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.fileName {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #1a7a1a;
+  margin-bottom: 4px;
+}
+
+.fileName::before {
+  content: '✓ ';
+}
+
+.quote {
+  margin: 0 0 4px;
+  font-style: italic;
+}
+
+.author {
+  color: #666;
+  font-size: 11px;
+}

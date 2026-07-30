@@ -43,3 +43,39 @@ export interface RecycleBinContent {
   intro: string
   items: RecycleBinItem[]
 }
+
+export interface AchievementTrack {
+  title: string
+  subtitle: string
+  duration: string
+}
+
+export interface AchievementsContent {
+  nowPlaying: string
+  tracks: AchievementTrack[]
+}
+
+export interface Testimonial {
+  quote: string
+  author: string
+  role: string
+}
+
+export interface TestimonialsContent {
+  scanSummary: string
+  testimonials: Testimonial[]
+}
+
+export interface ProjectFile {
+  name: string
+  description: string
+}
+
+export interface Project {
+  slug: string
+  name: string
+  summary: string
+  role: string
+  stack: string
+  files: ProjectFile[]
+}

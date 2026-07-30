@@ -1,0 +1,50 @@
+.body {
+  flex: 1;
+  overflow: auto;
+  background: #fff;
+  font-size: 12px;
+  color: #222;
+  padding: 14px;
+}
+
+.summary {
+  margin-top: 0;
+}
+
+.metaRow {
+  display: flex;
+  padding: 3px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.metaLabel {
+  width: 90px;
+  color: #444;
+  font-weight: bold;
+}
+
+.filesLabel {
+  font-weight: bold;
+  margin: 14px 0 6px;
+}
+
+.file {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.fileIcon {
+  flex-shrink: 0;
+}
+
+.fileName {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #1958d0;
+}
+
+.fileDescription {
+  color: #555;
+}

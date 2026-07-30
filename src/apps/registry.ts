@@ -3,9 +3,15 @@ import { ResumeWindow } from './resume/ResumeWindow'
 import { ContactWindow } from './contact/ContactWindow'
 import { RecycleBinWindow } from './recyclebin/RecycleBinWindow'
 import { SitePropertiesWindow } from './site-properties/SitePropertiesWindow'
+import { WinampWindow } from './winamp/WinampWindow'
+import { CCleanerWindow } from './ccleaner/CCleanerWindow'
+import { OutlookWindow } from './outlook/OutlookWindow'
+import { PaintWindow } from './paint/PaintWindow'
+import { createProjectFolderWindow } from './projects/ProjectFolderWindow'
+import { projects } from '../content/projects'
 import type { AppConfig } from './types'
 
-export const appRegistry: AppConfig[] = [
+const staticApps: AppConfig[] = [
   {
     id: 'about',
     title: 'My Computer — Properties',
@@ -61,7 +67,65 @@ export const appRegistry: AppConfig[] = [
     showOnDesktop: false,
     showInStartMenu: false,
   },
+  {
+    id: 'winamp',
+    title: 'Achievements.m3u — Winamp',
+    icon: '🎵',
+    iconLabel: 'Winamp',
+    defaultPosition: { x: 480, y: 80 },
+    defaultSize: { width: 300, height: 360 },
+    component: WinampWindow,
+    showOnDesktop: true,
+    showInStartMenu: true,
+  },
+  {
+    id: 'ccleaner',
+    title: 'Recuva — Recover Testimonials',
+    icon: '🧹',
+    iconLabel: 'Testimonials',
+    defaultPosition: { x: 150, y: 220 },
+    defaultSize: { width: 380, height: 320 },
+    component: CCleanerWindow,
+    showOnDesktop: true,
+    showInStartMenu: true,
+  },
+  {
+    id: 'outlook',
+    title: 'New Message — Outlook',
+    icon: '📧',
+    iconLabel: 'Outlook',
+    defaultPosition: { x: 300, y: 200 },
+    defaultSize: { width: 420, height: 380 },
+    component: OutlookWindow,
+    showOnDesktop: true,
+    showInStartMenu: true,
+  },
+  {
+    id: 'paint',
+    title: 'Paint',
+    icon: '🎨',
+    iconLabel: 'Paint',
+    defaultPosition: { x: 500, y: 260 },
+    defaultSize: { width: 320, height: 220 },
+    component: PaintWindow,
+    showOnDesktop: true,
+    showInStartMenu: true,
+  },
 ]
+
+const projectApps: AppConfig[] = projects.map((project, i) => ({
+  id: `project-${project.slug}`,
+  title: `${project.name} — Case Study`,
+  icon: '📁',
+  iconLabel: project.name,
+  defaultPosition: { x: 80 + i * 30, y: 260 + i * 30 },
+  defaultSize: { width: 380, height: 320 },
+  component: createProjectFolderWindow(project),
+  showOnDesktop: true,
+  showInStartMenu: true,
+}))
+
+export const appRegistry: AppConfig[] = [...staticApps, ...projectApps]
 
 export const appRegistryById: Record<string, AppConfig> = Object.fromEntries(
   appRegistry.map((app) => [app.id, app]),

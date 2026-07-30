@@ -1,0 +1,84 @@
+.player {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #3a3a3a 0%, #232323 100%);
+  color: #d8d8d8;
+  font-family: 'Courier New', monospace;
+}
+
+.lcd {
+  margin: 10px;
+  padding: 10px 12px;
+  background: #0a1f0a;
+  border: 1px solid #000;
+  color: #7dff7d;
+  font-size: 13px;
+  text-shadow: 0 0 4px rgba(125, 255, 125, 0.6);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.controls {
+  display: flex;
+  gap: 6px;
+  padding: 0 10px 10px;
+}
+
+.controlBtn {
+  width: 28px;
+  height: 22px;
+  background: linear-gradient(180deg, #565656 0%, #3a3a3a 100%);
+  border: 1px solid #1a1a1a;
+  border-radius: 2px;
+  color: #d8d8d8;
+  font-size: 11px;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlist {
+  flex: 1;
+  overflow: auto;
+  background: #111;
+  margin: 0 10px 10px;
+  border: 1px solid #000;
+}
+
+.track {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  border-bottom: 1px solid #1c1c1c;
+}
+
+.track:hover {
+  background: #1c1c1c;
+}
+
+.track.active {
+  background: #234a23;
+  color: #9dff9d;
+}
+
+.trackInfo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trackSubtitle {
+  color: #888;
+  font-size: 10px;
+}
+
+.trackDuration {
+  flex-shrink: 0;
+  color: #888;
+}
