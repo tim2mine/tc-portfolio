@@ -40,9 +40,11 @@ export function windowManagerReducer(
             id: action.id,
             isOpen: true,
             isMinimized: false,
+            isMaximized: false,
             zIndex,
             position: action.defaultPosition,
             size: action.defaultSize,
+            restoreBounds: null,
           }
       return {
         ...state,
@@ -56,9 +58,17 @@ export function windowManagerReducer(
     case 'CLOSE': {
       const existing = state.windows[action.id]
       if (!existing || !existing.isOpen) return state
+      const restored = existing.isMaximized && existing.restoreBounds ? existing.restoreBounds : null
       const windows = {
         ...state.windows,
-        [action.id]: { ...existing, isOpen: false, isMinimized: false },
+        [action.id]: {
+          ...existing,
+          isOpen: false,
+          isMinimized: false,
+          isMaximized: false,
+          restoreBounds: null,
+          ...(restored ? { position: restored.position, size: restored.size } : {}),
+        },
       }
       const focusedId =
         state.focusedId === action.id
@@ -141,6 +151,61 @@ export function windowManagerReducer(
           ...state.windows,
           [action.id]: { ...existing, position: action.position },
         },
+      }
+    }
+
+    case 'RESIZE': {
+      const existing = state.windows[action.id]
+      if (!existing) return state
+      return {
+        ...state,
+        windows: {
+          ...state.windows,
+          [action.id]: { ...existing, position: action.position, size: action.size },
+        },
+      }
+    }
+
+    case 'TOGGLE_MAXIMIZE': {
+      const existing = state.windows[action.id]
+      if (!existing || !existing.isOpen) return state
+      const zIndex = state.nextZIndex
+
+      if (existing.isMaximized) {
+        const restored = existing.restoreBounds ?? { position: existing.position, size: existing.size }
+        return {
+          ...state,
+          windows: {
+            ...state.windows,
+            [action.id]: {
+              ...existing,
+              isMaximized: false,
+              position: restored.position,
+              size: restored.size,
+              restoreBounds: null,
+              zIndex,
+            },
+          },
+          focusedId: action.id,
+          nextZIndex: state.nextZIndex + 1,
+        }
+      }
+
+      return {
+        ...state,
+        windows: {
+          ...state.windows,
+          [action.id]: {
+            ...existing,
+            isMaximized: true,
+            restoreBounds: { position: existing.position, size: existing.size },
+            position: action.maximizedBounds.position,
+            size: action.maximizedBounds.size,
+            zIndex,
+          },
+        },
+        focusedId: action.id,
+        nextZIndex: state.nextZIndex + 1,
       }
     }
 

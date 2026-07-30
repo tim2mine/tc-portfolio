@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react'
 import { appRegistry } from '../../apps/registry'
 import { aboutContent } from '../../content/about'
 import { useAppActions } from '../../hooks/useAppActions'
+import { useClickOutside } from '../../hooks/useClickOutside'
 import styles from './StartMenu.module.css'
 
 export interface StartMenuProps {
@@ -10,17 +10,7 @@ export interface StartMenuProps {
 
 export function StartMenu({ onClose }: StartMenuProps) {
   const { openApp } = useAppActions()
-  const menuRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    function handleDocumentClick(e: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        onClose()
-      }
-    }
-    document.addEventListener('click', handleDocumentClick)
-    return () => document.removeEventListener('click', handleDocumentClick)
-  }, [onClose])
+  const menuRef = useClickOutside<HTMLDivElement>(onClose)
 
   return (
     <div ref={menuRef} className={styles.menu}>

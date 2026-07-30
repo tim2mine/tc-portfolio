@@ -5,7 +5,7 @@
   right: 0;
   height: var(--xp-taskbar-height);
   z-index: var(--xp-z-taskbar);
-  background: linear-gradient(180deg, #2f7fe0 0%, #1958d0 8%, #1049b4 50%, #0c3a94 100%);
+  background: var(--xp-taskbar-grad);
   display: flex;
   align-items: center;
   padding: 0 3px;
@@ -16,7 +16,7 @@
   height: 24px;
   padding: 0 12px 0 6px;
   margin-right: 6px;
-  background: linear-gradient(180deg, #4fbf4f 0%, #2f9e2f 50%, #1f7d1f 100%);
+  background: var(--xp-startbtn-grad);
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: #fff;
@@ -41,12 +41,16 @@
   overflow: hidden;
 }
 
+:root[data-viewport='mobile'] .taskItems {
+  overflow-x: auto;
+}
+
 .tray {
   display: flex;
   align-items: center;
   gap: 8px;
   height: 24px;
-  background: linear-gradient(180deg, #1049a8 0%, #0c3a8a 100%);
+  background: var(--xp-tray-grad);
   border-left: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0 10px;
   border-radius: 3px 0 0 3px;

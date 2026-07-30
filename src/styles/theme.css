@@ -19,4 +19,85 @@
   --xp-z-bsod: 999;
 
   --xp-breakpoint-mobile: 767px;
+
+  /* ---- Skin tokens (default: XP "Luna" blue) ---- */
+  --xp-titlebar-active-grad: linear-gradient(
+    180deg,
+    #4e9af5 0%,
+    #2b6fdb 8%,
+    #1958d0 40%,
+    #1958d0 60%,
+    #0f45b8 100%
+  );
+  --xp-titlebar-inactive-grad: linear-gradient(180deg, #9db8d9 0%, #7d9dc9 50%, #7092c4 100%);
+  --xp-winbtn-close-grad: linear-gradient(180deg, #f6a86a 0%, #e8760f 50%, #d65f00 100%);
+  --xp-winbtn-blue-grad: linear-gradient(180deg, #7fc4f7 0%, #3f92e0 50%, #1f6fc4 100%);
+  --xp-taskbar-grad: linear-gradient(180deg, #2f7fe0 0%, #1958d0 8%, #1049b4 50%, #0c3a94 100%);
+  --xp-tray-grad: linear-gradient(180deg, #1049a8 0%, #0c3a8a 100%);
+  --xp-taskitem-grad: linear-gradient(180deg, #3f7fd4 0%, #2a5fb8 100%);
+  --xp-taskitem-active-grad: linear-gradient(180deg, #1a4fa8 0%, #123a80 100%);
+  --xp-startbtn-grad: linear-gradient(180deg, #4fbf4f 0%, #2f9e2f 50%, #1f7d1f 100%);
+  --xp-startmenu-header-grad: linear-gradient(180deg, #1958d0 0%, #2b6fdb 100%);
+  --xp-desktop-bg-grad: linear-gradient(
+    180deg,
+    #3a7bd5 0%,
+    #6ea8e8 35%,
+    #8fc4e8 55%,
+    #cde8b0 75%,
+    #6fae3e 100%
+  );
+}
+
+/* ---- Skin: Silver ---- */
+:root[data-skin='silver'] {
+  --xp-titlebar-active-grad: linear-gradient(
+    180deg,
+    #a7abb1 0%,
+    #8b909a 8%,
+    #7c828d 40%,
+    #7c828d 60%,
+    #5f6570 100%
+  );
+  --xp-titlebar-inactive-grad: linear-gradient(180deg, #c6c9ce 0%, #b3b7bd 50%, #a5aab1 100%);
+  --xp-winbtn-blue-grad: linear-gradient(180deg, #a9b0b8 0%, #7c828d 50%, #5f656f 100%);
+  --xp-taskbar-grad: linear-gradient(180deg, #9299a3 0%, #7c828d 8%, #666c76 50%, #52565e 100%);
+  --xp-tray-grad: linear-gradient(180deg, #666c76 0%, #4d515a 100%);
+  --xp-taskitem-grad: linear-gradient(180deg, #9199a3 0%, #767c86 100%);
+  --xp-taskitem-active-grad: linear-gradient(180deg, #5a5f68 0%, #40444c 100%);
+  --xp-startmenu-header-grad: linear-gradient(180deg, #7c828d 0%, #8b909a 100%);
+  --xp-desktop-bg-grad: linear-gradient(
+    180deg,
+    #6a7078 0%,
+    #8b909a 35%,
+    #aab0b8 55%,
+    #c8ccd0 75%,
+    #9aa0a8 100%
+  );
+}
+
+/* ---- Skin: Olive ---- */
+:root[data-skin='olive'] {
+  --xp-titlebar-active-grad: linear-gradient(
+    180deg,
+    #a9bb7d 0%,
+    #8fa85e 8%,
+    #74903f 40%,
+    #74903f 60%,
+    #5a7530 100%
+  );
+  --xp-titlebar-inactive-grad: linear-gradient(180deg, #c3cf9f 0%, #b0c188 50%, #a3b779 100%);
+  --xp-winbtn-blue-grad: linear-gradient(180deg, #b8cc8a 0%, #8fa85e 50%, #6f8a44 100%);
+  --xp-taskbar-grad: linear-gradient(180deg, #8fa85e 0%, #74903f 8%, #5a7530 50%, #465c25 100%);
+  --xp-tray-grad: linear-gradient(180deg, #5a7530 0%, #445a24 100%);
+  --xp-taskitem-grad: linear-gradient(180deg, #8ea45f 0%, #6f8a44 100%);
+  --xp-taskitem-active-grad: linear-gradient(180deg, #4c6427 0%, #384c1c 100%);
+  --xp-startmenu-header-grad: linear-gradient(180deg, #74903f 0%, #8fa85e 100%);
+  --xp-desktop-bg-grad: linear-gradient(
+    180deg,
+    #5a7530 0%,
+    #74903f 35%,
+    #a3b779 55%,
+    #cddba0 75%,
+    #8fa85e 100%
+  );
 }

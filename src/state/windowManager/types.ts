@@ -8,13 +8,20 @@ export interface Size {
   height: number
 }
 
+export interface Bounds {
+  position: Point
+  size: Size
+}
+
 export interface WindowState {
   id: string
   isOpen: boolean
   isMinimized: boolean
+  isMaximized: boolean
   zIndex: number
   position: Point
   size: Size
+  restoreBounds: Bounds | null
 }
 
 export interface WindowManagerState {
@@ -31,3 +38,5 @@ export type WindowManagerAction =
   | { type: 'TOGGLE_MINIMIZE'; id: string }
   | { type: 'FOCUS'; id: string }
   | { type: 'MOVE'; id: string; position: Point }
+  | { type: 'RESIZE'; id: string; position: Point; size: Size }
+  | { type: 'TOGGLE_MAXIMIZE'; id: string; maximizedBounds: Bounds }

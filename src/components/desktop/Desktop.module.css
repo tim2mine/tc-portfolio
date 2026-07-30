@@ -9,4 +9,16 @@
   grid-template-rows: repeat(6, 84px);
   grid-auto-flow: column;
   gap: 4px;
+  transition: opacity 0.09s ease;
+}
+
+.flashing {
+  opacity: 0.4;
+}
+
+:root[data-viewport='mobile'] .desktop {
+  grid-template-rows: none;
+  grid-template-columns: repeat(auto-fill, 76px);
+  grid-auto-flow: row;
+  justify-content: start;
 }

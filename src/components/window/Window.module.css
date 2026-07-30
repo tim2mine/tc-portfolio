@@ -1,6 +1,7 @@
 .win {
   position: absolute;
   min-width: 240px;
+  min-height: 160px;
   background: var(--xp-window-bg);
   border: 1px solid var(--xp-window-border);
   border-radius: var(--xp-window-radius);
@@ -12,4 +13,14 @@
 
 .hidden {
   display: none;
+}
+
+:root[data-viewport='mobile'] .win {
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0;
+  border-radius: 0;
+  border-width: 0;
 }

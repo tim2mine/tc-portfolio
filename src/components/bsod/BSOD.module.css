@@ -1,0 +1,25 @@
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: var(--xp-z-bsod);
+  background: #0000aa;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 60px 80px;
+  cursor: pointer;
+}
+
+.header {
+  background: #aaaaaa;
+  color: #0000aa;
+  padding: 2px 8px;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.hint {
+  margin-top: 32px;
+  font-size: 13px;
+}

@@ -1,11 +1,31 @@
 .body {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: 14px;
   padding: 14px;
   color: #888;
   font-size: 12px;
   background: #fff;
+}
+
+.intro {
+  margin: 0;
+}
+
+.emptyBtn {
+  padding: 5px 12px;
+  font-size: 11px;
+  border: 1px solid var(--xp-sunken-border);
+  border-radius: 3px;
+  background: var(--xp-window-bg);
+  color: #222;
+  cursor: pointer;
+}
+
+.emptyBtn:hover {
+  filter: brightness(1.05);
 }

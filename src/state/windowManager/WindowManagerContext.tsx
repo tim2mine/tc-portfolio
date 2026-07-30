@@ -3,7 +3,7 @@ import {
   initialWindowManagerState,
   windowManagerReducer,
 } from './windowManagerReducer'
-import type { Point, Size, WindowManagerState } from './types'
+import type { Bounds, Point, Size, WindowManagerState } from './types'
 
 export interface WindowManagerContextValue {
   state: WindowManagerState
@@ -13,6 +13,8 @@ export interface WindowManagerContextValue {
   toggleMinimizeWindow: (id: string) => void
   focusWindow: (id: string) => void
   moveWindow: (id: string, position: Point) => void
+  resizeWindow: (id: string, position: Point, size: Size) => void
+  toggleMaximizeWindow: (id: string, maximizedBounds: Bounds) => void
 }
 
 export const WindowManagerContext = createContext<WindowManagerContextValue | null>(null)
@@ -36,6 +38,15 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
     (id: string, position: Point) => dispatch({ type: 'MOVE', id, position }),
     [],
   )
+  const resizeWindow = useCallback(
+    (id: string, position: Point, size: Size) => dispatch({ type: 'RESIZE', id, position, size }),
+    [],
+  )
+  const toggleMaximizeWindow = useCallback(
+    (id: string, maximizedBounds: Bounds) =>
+      dispatch({ type: 'TOGGLE_MAXIMIZE', id, maximizedBounds }),
+    [],
+  )
 
   const value = useMemo<WindowManagerContextValue>(
     () => ({
@@ -46,8 +57,20 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
       toggleMinimizeWindow,
       focusWindow,
       moveWindow,
+      resizeWindow,
+      toggleMaximizeWindow,
     }),
-    [state, openWindow, closeWindow, minimizeWindow, toggleMinimizeWindow, focusWindow, moveWindow],
+    [
+      state,
+      openWindow,
+      closeWindow,
+      minimizeWindow,
+      toggleMinimizeWindow,
+      focusWindow,
+      moveWindow,
+      resizeWindow,
+      toggleMaximizeWindow,
+    ],
   )
 
   return (

@@ -2,6 +2,7 @@ import { AboutWindow } from './about/AboutWindow'
 import { ResumeWindow } from './resume/ResumeWindow'
 import { ContactWindow } from './contact/ContactWindow'
 import { RecycleBinWindow } from './recyclebin/RecycleBinWindow'
+import { SitePropertiesWindow } from './site-properties/SitePropertiesWindow'
 import type { AppConfig } from './types'
 
 export const appRegistry: AppConfig[] = [
@@ -48,6 +49,17 @@ export const appRegistry: AppConfig[] = [
     component: RecycleBinWindow,
     showOnDesktop: true,
     showInStartMenu: true,
+  },
+  {
+    id: 'site-properties',
+    title: 'Properties — About This Site',
+    icon: '⚙️',
+    iconLabel: 'Properties',
+    defaultPosition: { x: 220, y: 130 },
+    defaultSize: { width: 360, height: 260 },
+    component: SitePropertiesWindow,
+    showOnDesktop: false,
+    showInStartMenu: false,
   },
 ]
 

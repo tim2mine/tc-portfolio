@@ -4,7 +4,7 @@
   margin-left: 2px;
   border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  background: linear-gradient(180deg, #f6a86a 0%, #e8760f 50%, #d65f00 100%);
+  background: var(--xp-winbtn-close-grad);
   color: #fff;
   font-size: 11px;
   font-weight: bold;
@@ -17,7 +17,7 @@
 }
 
 .btn.blue {
-  background: linear-gradient(180deg, #7fc4f7 0%, #3f92e0 50%, #1f6fc4 100%);
+  background: var(--xp-winbtn-blue-grad);
 }
 
 .btn:hover {

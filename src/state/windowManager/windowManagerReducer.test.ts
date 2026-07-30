@@ -130,4 +130,70 @@ describe('windowManagerReducer', () => {
     })
     expect(state).toBe(initialWindowManagerState)
   })
+
+  it('RESIZE updates both position and size of the target window', () => {
+    let state = open(initialWindowManagerState, 'about')
+    const newPos = { x: 5, y: 5 }
+    const newSize = { width: 500, height: 400 }
+    state = windowManagerReducer(state, { type: 'RESIZE', id: 'about', position: newPos, size: newSize })
+    expect(state.windows.about.position).toEqual(newPos)
+    expect(state.windows.about.size).toEqual(newSize)
+  })
+
+  it('RESIZE on an unknown id is a no-op', () => {
+    const state = windowManagerReducer(initialWindowManagerState, {
+      type: 'RESIZE',
+      id: 'ghost',
+      position: { x: 1, y: 1 },
+      size: { width: 1, height: 1 },
+    })
+    expect(state).toBe(initialWindowManagerState)
+  })
+
+  describe('TOGGLE_MAXIMIZE', () => {
+    const maximizedBounds = { position: { x: 0, y: 0 }, size: { width: 1200, height: 800 } }
+
+    it('maximizes: stashes current bounds, applies maximizedBounds, focuses and raises z-index', () => {
+      let state = open(initialWindowManagerState, 'about')
+      state = open(state, 'resume') // resume focused/top; about is background
+      state = windowManagerReducer(state, { type: 'TOGGLE_MAXIMIZE', id: 'about', maximizedBounds })
+      expect(state.windows.about.isMaximized).toBe(true)
+      expect(state.windows.about.position).toEqual(maximizedBounds.position)
+      expect(state.windows.about.size).toEqual(maximizedBounds.size)
+      expect(state.windows.about.restoreBounds).toEqual({ position: pos, size })
+      expect(state.focusedId).toBe('about')
+      expect(state.windows.about.zIndex).toBeGreaterThan(state.windows.resume.zIndex)
+    })
+
+    it('restores: reverts to the stashed bounds and clears restoreBounds', () => {
+      let state = open(initialWindowManagerState, 'about')
+      state = windowManagerReducer(state, { type: 'TOGGLE_MAXIMIZE', id: 'about', maximizedBounds })
+      state = windowManagerReducer(state, { type: 'TOGGLE_MAXIMIZE', id: 'about', maximizedBounds })
+      expect(state.windows.about.isMaximized).toBe(false)
+      expect(state.windows.about.position).toEqual(pos)
+      expect(state.windows.about.size).toEqual(size)
+      expect(state.windows.about.restoreBounds).toBeNull()
+    })
+
+    it('TOGGLE_MAXIMIZE on an unopened/unknown id is a no-op', () => {
+      const state = windowManagerReducer(initialWindowManagerState, {
+        type: 'TOGGLE_MAXIMIZE',
+        id: 'ghost',
+        maximizedBounds,
+      })
+      expect(state).toBe(initialWindowManagerState)
+    })
+  })
+
+  it('closing a maximized window restores its pre-maximize bounds and clears isMaximized', () => {
+    const maximizedBounds = { position: { x: 0, y: 0 }, size: { width: 1200, height: 800 } }
+    let state = open(initialWindowManagerState, 'about')
+    state = windowManagerReducer(state, { type: 'TOGGLE_MAXIMIZE', id: 'about', maximizedBounds })
+    state = windowManagerReducer(state, { type: 'CLOSE', id: 'about' })
+    expect(state.windows.about.isOpen).toBe(false)
+    expect(state.windows.about.isMaximized).toBe(false)
+    expect(state.windows.about.restoreBounds).toBeNull()
+    expect(state.windows.about.position).toEqual(pos)
+    expect(state.windows.about.size).toEqual(size)
+  })
 })

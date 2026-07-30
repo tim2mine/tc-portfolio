@@ -1,14 +1,7 @@
 .titlebar {
   height: 28px;
   flex-shrink: 0;
-  background: linear-gradient(
-    180deg,
-    #4e9af5 0%,
-    #2b6fdb 8%,
-    #1958d0 40%,
-    #1958d0 60%,
-    #0f45b8 100%
-  );
+  background: var(--xp-titlebar-active-grad);
   display: flex;
   align-items: center;
   padding: 2px 3px 2px 6px;
@@ -21,7 +14,16 @@
 }
 
 .titlebar.inactive {
-  background: linear-gradient(180deg, #9db8d9 0%, #7d9dc9 50%, #7092c4 100%);
+  background: var(--xp-titlebar-inactive-grad);
+}
+
+.titlebar.maximized {
+  cursor: default;
+}
+
+:root[data-viewport='mobile'] .titlebar {
+  cursor: default;
+  touch-action: auto;
 }
 
 .icon {

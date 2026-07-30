@@ -20,16 +20,14 @@ body {
 }
 
 body {
-  background: linear-gradient(
-    180deg,
-    #3a7bd5 0%,
-    #6ea8e8 35%,
-    #8fc4e8 55%,
-    #cde8b0 75%,
-    #6fae3e 100%
-  );
+  background: var(--xp-desktop-bg-grad);
   position: relative;
   user-select: none;
+}
+
+body.cursor-hourglass,
+body.cursor-hourglass * {
+  cursor: wait !important;
 }
 
 #root {

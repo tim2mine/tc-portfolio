@@ -1,9 +1,12 @@
 import { useRef, type ReactNode } from 'react'
 import { useWindowManager } from '../../state/windowManager/useWindowManager'
 import { useDraggable, type DragBounds } from '../../hooks/useDraggable'
+import { useResizable } from '../../hooks/useResizable'
 import { useAppActions } from '../../hooks/useAppActions'
-import { TASKBAR_HEIGHT_PX } from '../../utils/constants'
+import { useViewportMode } from '../../hooks/useViewportMode'
+import { TASKBAR_HEIGHT_PX, MIN_WINDOW_SIZE } from '../../utils/constants'
 import { WindowTitlebar } from './WindowTitlebar'
+import { WindowResizeHandles } from './WindowResizeHandles'
 import styles from './Window.module.css'
 
 export interface WindowProps {
@@ -23,23 +26,45 @@ function computeBounds(size: { width: number; height: number }): DragBounds {
   }
 }
 
+function computeMaximizedBounds() {
+  return {
+    position: { x: 0, y: 0 },
+    size: { width: window.innerWidth, height: window.innerHeight - TASKBAR_HEIGHT_PX },
+  }
+}
+
 export function Window({ id, title, icon, children }: WindowProps) {
-  const { state, focusWindow, moveWindow } = useWindowManager()
-  const { closeApp, toggleMinimizeApp } = useAppActions()
+  const { state, focusWindow, moveWindow, resizeWindow } = useWindowManager()
+  const { closeApp, toggleMinimizeApp, toggleMaximizeApp } = useAppActions()
+  const viewportMode = useViewportMode()
   const win = state.windows[id]
   const windowRef = useRef<HTMLDivElement>(null)
   const titlebarRef = useRef<HTMLDivElement>(null)
 
+  const isMobile = viewportMode === 'mobile'
+  const isMaximized = win?.isMaximized ?? false
+
   useDraggable(titlebarRef, windowRef, {
     position: win?.position ?? { x: 0, y: 0 },
     onDragEnd: (position) => moveWindow(id, position),
-    disabled: !win?.isOpen,
+    disabled: !win?.isOpen || isMobile || isMaximized,
     bounds: win ? computeBounds(win.size) : undefined,
+  })
+
+  useResizable(windowRef, {
+    position: win?.position ?? { x: 0, y: 0 },
+    size: win?.size ?? MIN_WINDOW_SIZE,
+    minSize: MIN_WINDOW_SIZE,
+    maxRight: typeof window !== 'undefined' ? window.innerWidth : 0,
+    maxBottom: typeof window !== 'undefined' ? window.innerHeight - TASKBAR_HEIGHT_PX : 0,
+    onResizeEnd: (position, size) => resizeWindow(id, position, size),
+    disabled: !win?.isOpen || isMobile || isMaximized,
   })
 
   if (!win || !win.isOpen) return null
 
   const isActive = state.focusedId === id
+  const showResizeHandles = !isMobile && !isMaximized
 
   return (
     <div
@@ -61,10 +86,13 @@ export function Window({ id, title, icon, children }: WindowProps) {
         icon={icon}
         title={title}
         active={isActive}
+        maximized={isMaximized}
         onMinimize={() => toggleMinimizeApp(id)}
+        onMaximize={isMobile ? undefined : () => toggleMaximizeApp(id, computeMaximizedBounds())}
         onClose={() => closeApp(id)}
       />
       {children}
+      {showResizeHandles && <WindowResizeHandles />}
     </div>
   )
 }

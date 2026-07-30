@@ -1,11 +1,16 @@
 import { useState } from 'react'
 import { WindowManagerProvider } from './state/windowManager/WindowManagerContext'
 import { SoundProvider } from './state/sound/SoundContext'
+import { SkinProvider } from './state/skin/SkinContext'
+import { BSODProvider } from './state/bsod/BSODContext'
+import { ViewportModeProvider } from './state/viewport/ViewportModeContext'
 import { appRegistry } from './apps/registry'
 import { Desktop } from './components/desktop/Desktop'
 import { Window } from './components/window/Window'
 import { Taskbar } from './components/taskbar/Taskbar'
 import { StartMenu } from './components/start-menu/StartMenu'
+import { BootScreen } from './components/boot/BootScreen'
+import { hasBootedThisSession, markBootedThisSession } from './utils/boot'
 
 function DesktopShell() {
   const [startMenuOpen, setStartMenuOpen] = useState(false)
@@ -32,11 +37,28 @@ function DesktopShell() {
 }
 
 function App() {
+  const [booted, setBooted] = useState(hasBootedThisSession)
+
   return (
     <SoundProvider>
-      <WindowManagerProvider>
-        <DesktopShell />
-      </WindowManagerProvider>
+      <SkinProvider>
+        <ViewportModeProvider>
+          <BSODProvider>
+            {booted ? (
+              <WindowManagerProvider>
+                <DesktopShell />
+              </WindowManagerProvider>
+            ) : (
+              <BootScreen
+                onFinish={() => {
+                  markBootedThisSession()
+                  setBooted(true)
+                }}
+              />
+            )}
+          </BSODProvider>
+        </ViewportModeProvider>
+      </SkinProvider>
     </SoundProvider>
   )
 }
