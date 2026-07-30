@@ -1,0 +1,37 @@
+.menubar {
+  background: var(--xp-window-bg);
+  font-size: 11px;
+  padding: 3px 6px;
+  border-bottom: 1px solid var(--xp-menubar-border);
+  display: flex;
+  gap: 14px;
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+  padding: 14px;
+  background: #fff;
+  font-size: 12px;
+  color: #222;
+}
+
+.intro {
+  margin-top: 0;
+}
+
+.row {
+  display: flex;
+  padding: 3px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  width: 130px;
+  color: #444;
+  font-weight: bold;
+}

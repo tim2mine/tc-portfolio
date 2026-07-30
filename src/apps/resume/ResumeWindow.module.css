@@ -1,0 +1,22 @@
+.menubar {
+  background: var(--xp-window-bg);
+  font-size: 11px;
+  padding: 3px 6px;
+  border-bottom: 1px solid var(--xp-menubar-border);
+  display: flex;
+  gap: 14px;
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  background: #fff;
+  padding: 10px;
+}
+
+.downloadLink {
+  color: #1958d0;
+}

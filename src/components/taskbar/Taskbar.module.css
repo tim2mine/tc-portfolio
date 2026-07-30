@@ -1,0 +1,55 @@
+.taskbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--xp-taskbar-height);
+  z-index: var(--xp-z-taskbar);
+  background: linear-gradient(180deg, #2f7fe0 0%, #1958d0 8%, #1049b4 50%, #0c3a94 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 3px;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.startBtn {
+  height: 24px;
+  padding: 0 12px 0 6px;
+  margin-right: 6px;
+  background: linear-gradient(180deg, #4fbf4f 0%, #2f9e2f 50%, #1f7d1f 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.startBtn:hover {
+  filter: brightness(1.08);
+}
+
+.taskItems {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.tray {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 24px;
+  background: linear-gradient(180deg, #1049a8 0%, #0c3a8a 100%);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 10px;
+  border-radius: 3px 0 0 3px;
+  color: #fff;
+  font-size: 11px;
+}

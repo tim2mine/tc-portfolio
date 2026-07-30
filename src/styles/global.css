@@ -1,0 +1,46 @@
+@import './theme.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html,
+body {
+  overflow: hidden;
+  font-family: var(--xp-font-stack);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: linear-gradient(
+    180deg,
+    #3a7bd5 0%,
+    #6ea8e8 35%,
+    #8fc4e8 55%,
+    #cde8b0 75%,
+    #6fae3e 100%
+  );
+  position: relative;
+  user-select: none;
+}
+
+#root {
+  position: relative;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

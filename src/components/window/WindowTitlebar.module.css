@@ -1,0 +1,41 @@
+.titlebar {
+  height: 28px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    180deg,
+    #4e9af5 0%,
+    #2b6fdb 8%,
+    #1958d0 40%,
+    #1958d0 60%,
+    #0f45b8 100%
+  );
+  display: flex;
+  align-items: center;
+  padding: 2px 3px 2px 6px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.titlebar:active {
+  cursor: grabbing;
+}
+
+.titlebar.inactive {
+  background: linear-gradient(180deg, #9db8d9 0%, #7d9dc9 50%, #7092c4 100%);
+}
+
+.icon {
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.text {
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  flex: 1;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

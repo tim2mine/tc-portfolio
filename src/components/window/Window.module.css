@@ -1,0 +1,15 @@
+.win {
+  position: absolute;
+  min-width: 240px;
+  background: var(--xp-window-bg);
+  border: 1px solid var(--xp-window-border);
+  border-radius: var(--xp-window-radius);
+  box-shadow: var(--xp-window-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}

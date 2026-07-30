@@ -1,0 +1,12 @@
+.desktop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: var(--xp-taskbar-height);
+  padding: 12px;
+  display: grid;
+  grid-template-rows: repeat(6, 84px);
+  grid-auto-flow: column;
+  gap: 4px;
+}

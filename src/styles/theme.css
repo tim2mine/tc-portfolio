@@ -1,0 +1,22 @@
+:root {
+  --xp-font-stack: 'Tahoma', 'MS Sans Serif', Verdana, Geneva, sans-serif;
+
+  --xp-taskbar-height: 32px;
+  --xp-start-menu-width: 240px;
+
+  --xp-window-bg: #ece9d8;
+  --xp-window-border: #0831d9;
+  --xp-window-radius: 8px 8px 3px 3px;
+  --xp-window-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+  --xp-sunken-border: #7f9db9;
+  --xp-menubar-border: #b8b19a;
+
+  --xp-z-window-base: 10;
+  --xp-z-taskbar: 900;
+  --xp-z-start-menu: 950;
+  --xp-z-context-menu: 960;
+  --xp-z-boot: 990;
+  --xp-z-bsod: 999;
+
+  --xp-breakpoint-mobile: 767px;
+}

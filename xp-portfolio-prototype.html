@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Alex Rivera — Portfolio</title>
+<style>
+  @font-face {
+    font-family: 'Tahoma';
+    src: local('Tahoma'), local('Verdana');
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    font-family: 'Tahoma', 'Segoe UI', Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background: linear-gradient(180deg, #3a7bd5 0%, #6ea8e8 35%, #8fc4e8 55%, #cde8b0 75%, #6fae3e 100%);
+    position: relative;
+    user-select: none;
+  }
+
+  /* ---------- Desktop icons ---------- */
+  #desktop {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 32px;
+    padding: 12px;
+    display: grid;
+    grid-template-rows: repeat(6, 84px);
+    grid-auto-flow: column;
+    gap: 4px;
+  }
+  .icon {
+    width: 76px; height: 78px;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 4px; border-radius: 3px;
+    cursor: pointer;
+  }
+  .icon:hover .icon-glyph { filter: brightness(1.1); }
+  .icon.selected { background: rgba(49,106,197,0.35); outline: 1px dotted #fff; }
+  .icon-glyph {
+    width: 40px; height: 40px; margin-bottom: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+  .icon-label {
+    color: #fff; font-size: 11px; text-align: center; line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.85);
+    max-width: 74px;
+  }
+
+  /* ---------- Windows ---------- */
+  .win {
+    position: absolute;
+    min-width: 280px;
+    background: #ece9d8;
+    border: 1px solid #0831d9;
+    border-radius: 8px 8px 3px 3px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .win.closed { display: none; }
+  .titlebar {
+    height: 28px;
+    background: linear-gradient(180deg, #4e9af5 0%, #2b6fdb 8%, #1958d0 40%, #1958d0 60%, #0f45b8 100%);
+    display: flex; align-items: center;
+    padding: 2px 3px 2px 6px;
+    cursor: grab;
+  }
+  .titlebar.active {
+    background: linear-gradient(180deg, #4e9af5 0%, #2b6fdb 8%, #1958d0 40%, #1958d0 60%, #0f45b8 100%);
+  }
+  .titlebar.inactive {
+    background: linear-gradient(180deg, #9db8d9 0%, #7d9dc9 50%, #7092c4 100%);
+  }
+  .title-icon { font-size: 14px; margin-right: 5px; }
+  .title-text { color: #fff; font-size: 12px; font-weight: bold; flex: 1; text-shadow: 1px 1px 1px rgba(0,0,0,0.3); }
+  .win-btn {
+    width: 21px; height: 20px; margin-left: 2px;
+    border-radius: 3px; border: 1px solid rgba(255,255,255,0.4);
+    background: linear-gradient(180deg, #f6a86a 0%, #e8760f 50%, #d65f00 100%);
+    color: #fff; font-size: 11px; font-weight: bold;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; line-height: 1;
+  }
+  .win-btn.min, .win-btn.max {
+    background: linear-gradient(180deg, #7fc4f7 0%, #3f92e0 50%, #1f6fc4 100%);
+  }
+  .win-btn.close:hover { filter: brightness(1.15); }
+
+  .menubar {
+    background: #ece9d8; font-size: 11px; padding: 3px 6px;
+    border-bottom: 1px solid #b8b19a; display: flex; gap: 14px;
+  }
+  .win-body {
+    flex: 1; overflow: auto; padding: 14px;
+    background: #fff; font-size: 12px; color: #222;
+  }
+  .win-body.sunken {
+    margin: 3px; border: 1px solid #7f9db9; background: #fff;
+  }
+
+  /* About window contents */
+  .prop-row { display: flex; padding: 3px 0; border-bottom: 1px solid #eee; }
+  .prop-label { width: 110px; color: #444; font-weight: bold; }
+
+  /* Resume window (notepad style) */
+  .notepad-body {
+    font-family: 'Courier New', monospace; font-size: 12px; white-space: pre-wrap;
+    background: #fff; padding: 10px;
+  }
+
+  /* IE window */
+  .ie-toolbar {
+    background: #ece9d8; padding: 4px 6px; border-bottom: 1px solid #b8b19a;
+    display: flex; align-items: center; gap: 6px; font-size: 11px;
+  }
+  .ie-address {
+    flex: 1; background: #fff; border: 1px solid #7f9db9; border-radius: 2px;
+    padding: 2px 6px; font-size: 11px; color: #333;
+  }
+  .bookmark { display: flex; align-items: center; gap: 8px; padding: 6px 4px; border-bottom: 1px solid #eee; cursor: pointer; }
+  .bookmark:hover { background: #e5efff; }
+  .bookmark span.dot { color: #1958d0; }
+
+  /* ---------- Taskbar ---------- */
+  #taskbar {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 32px;
+    background: linear-gradient(180deg, #2f7fe0 0%, #1958d0 8%, #1049b4 50%, #0c3a94 100%);
+    display: flex; align-items: center; padding: 0 3px;
+    box-shadow: 0 -1px 0 rgba(255,255,255,0.3);
+  }
+  #start-btn {
+    height: 24px; padding: 0 12px 0 6px; margin-right: 6px;
+    background: linear-gradient(180deg, #4fbf4f 0%, #2f9e2f 50%, #1f7d1f 100%);
+    border-radius: 4px; border: 1px solid rgba(255,255,255,0.5);
+    color: #fff; font-weight: bold; font-size: 13px; font-style: italic;
+    display: flex; align-items: center; gap: 4px; cursor: pointer;
+  }
+  #start-btn:hover { filter: brightness(1.08); }
+  #task-items { flex: 1; display: flex; gap: 4px; height: 24px; }
+  .task-item {
+    background: linear-gradient(180deg, #3f7fd4 0%, #2a5fb8 100%);
+    border: 1px solid #0c3a94; border-radius: 3px;
+    color: #fff; font-size: 11px; padding: 0 10px;
+    display: flex; align-items: center; gap: 5px; cursor: pointer;
+    max-width: 150px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  }
+  .task-item.active { background: linear-gradient(180deg, #1a4fa8 0%, #123a80 100%); box-shadow: inset 1px 1px 2px rgba(0,0,0,0.4); }
+  #tray {
+    display: flex; align-items: center; gap: 8px; height: 24px;
+    background: linear-gradient(180deg, #1049a8 0%, #0c3a8a 100%);
+    border-left: 1px solid rgba(255,255,255,0.2);
+    padding: 0 10px; border-radius: 3px 0 0 3px; color: #fff; font-size: 11px;
+  }
+  #sound-toggle { cursor: pointer; font-size: 13px; }
+
+  /* Start menu */
+  #start-menu {
+    position: absolute; bottom: 32px; left: 3px; width: 240px;
+    background: #ece9d8; border: 1px solid #0831d9; border-radius: 6px 6px 3px 3px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.4); overflow: hidden; display: none;
+  }
+  #start-menu.open { display: block; }
+  .start-header {
+    background: linear-gradient(180deg, #1958d0 0%, #2b6fdb 100%);
+    color: #fff; padding: 10px 12px; font-weight: bold; font-size: 13px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .start-item {
+    padding: 7px 12px; font-size: 12px; display: flex; align-items: center; gap: 8px; cursor: pointer;
+  }
+  .start-item:hover { background: #2b6fdb; color: #fff; }
+
+  #clock { color: #fff; font-size: 11px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+<h2 class="sr-only">A working prototype of a Windows XP style desktop used as a portfolio site, with clickable icons that open draggable resume, about, and contact windows.</h2>
+
+<div id="desktop">
+  <div class="icon" data-open="about">
+    <div class="icon-glyph">🖥️</div>
+    <div class="icon-label">My Computer</div>
+  </div>
+  <div class="icon" data-open="resume">
+    <div class="icon-glyph">📁</div>
+    <div class="icon-label">My Documents</div>
+  </div>
+  <div class="icon" data-open="contact">
+    <div class="icon-glyph">🌐</div>
+    <div class="icon-label">Internet Explorer</div>
+  </div>
+  <div class="icon" data-open="recyclebin">
+    <div class="icon-glyph">🗑️</div>
+    <div class="icon-label">Recycle Bin</div>
+  </div>
+</div>
+
+<!-- About Me window -->
+<div class="win" id="win-about" style="top:70px; left:120px; width:400px;">
+  <div class="titlebar active" data-win="about">
+    <span class="title-icon">🖥️</span>
+    <span class="title-text">My Computer — Properties</span>
+    <div class="win-btn min">_</div>
+    <div class="win-btn max">□</div>
+    <div class="win-btn close">✕</div>
+  </div>
+  <div class="menubar"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>
+  <div class="win-body">
+    <p style="margin-top:0"><strong>Alex Rivera</strong> — Product Designer</p>
+    <div class="prop-row"><div class="prop-label">Registered to:</div><div>Alex Rivera</div></div>
+    <div class="prop-row"><div class="prop-label">Location:</div><div>Brooklyn, NY</div></div>
+    <div class="prop-row"><div class="prop-label">System:</div><div>5 yrs product design experience</div></div>
+    <div class="prop-row"><div class="prop-label">Processor:</div><div>Figma, React, a little too much coffee</div></div>
+    <div class="prop-row"><div class="prop-label">Installed drivers:</div><div>UX research, prototyping, design systems</div></div>
+    <div class="prop-row" style="border-bottom:none"><div class="prop-label">Status:</div><div>Open to new roles</div></div>
+  </div>
+</div>
+
+<!-- Resume window -->
+<div class="win" id="win-resume" style="top:110px; left:260px; width:420px; height:320px;">
+  <div class="titlebar" data-win="resume">
+    <span class="title-icon">📄</span>
+    <span class="title-text">Resume.txt — Notepad</span>
+    <div class="win-btn min">_</div>
+    <div class="win-btn max">□</div>
+    <div class="win-btn close">✕</div>
+  </div>
+  <div class="menubar"><span>File</span><span>Edit</span><span>Format</span><span>Help</span></div>
+  <div class="win-body notepad-body">ALEX RIVERA
+Product Designer
+
+EXPERIENCE
+2023–now   Senior Product Designer, Northwind Co.
+2020–2023  Product Designer, Fernway Labs
+2018–2020  UX Designer, Studio Halden
+
+SKILLS
+Figma, prototyping, design systems,
+user research, front-end (React/CSS)
+
+EDUCATION
+BFA Design, Rhode Island School of Design
+
+[Download full resume as PDF]</div>
+</div>
+
+<!-- Contact window -->
+<div class="win closed" id="win-contact" style="top:150px; left:340px; width:380px; height:300px;">
+  <div class="titlebar" data-win="contact">
+    <span class="title-icon">🌐</span>
+    <span class="title-text">Contact — Internet Explorer</span>
+    <div class="win-btn min">_</div>
+    <div class="win-btn max">□</div>
+    <div class="win-btn close">✕</div>
+  </div>
+  <div class="ie-toolbar">
+    <span>◀</span><span>▶</span><span>⟳</span>
+    <div class="ie-address">http://www.alexrivera-portfolio.com/contact</div>
+  </div>
+  <div class="win-body" style="padding:0;">
+    <div style="padding:8px 10px 4px; font-size:11px; color:#666;">Favorites</div>
+    <div class="bookmark"><span class="dot">●</span> Email — alex@rivera.design</div>
+    <div class="bookmark"><span class="dot">●</span> LinkedIn — /in/alexrivera</div>
+    <div class="bookmark"><span class="dot">●</span> Dribbble — /alexrivera</div>
+    <div class="bookmark"><span class="dot">●</span> GitHub — /alexrivera</div>
+  </div>
+</div>
+
+<!-- Recycle bin (empty joke window) -->
+<div class="win closed" id="win-recyclebin" style="top:190px; left:400px; width:300px; height:160px;">
+  <div class="titlebar" data-win="recyclebin">
+    <span class="title-icon">🗑️</span>
+    <span class="title-text">Recycle Bin</span>
+    <div class="win-btn min">_</div>
+    <div class="win-btn max">□</div>
+    <div class="win-btn close">✕</div>
+  </div>
+  <div class="win-body" style="display:flex; align-items:center; justify-content:center; color:#888;">
+    Old side projects and ideas that didn't make the cut — coming soon.
+  </div>
+</div>
+
+<!-- Taskbar -->
+<div id="taskbar">
+  <div id="start-btn"><span>⊞</span> start</div>
+  <div id="task-items"></div>
+  <div id="tray">
+    <span id="sound-toggle" title="Toggle sound">🔊</span>
+    <span id="clock">12:00 PM</span>
+  </div>
+</div>
+
+<!-- Start menu -->
+<div id="start-menu">
+  <div class="start-header"><span>🙂</span> Alex Rivera</div>
+  <div class="start-item" data-open="about">🖥️ My Computer</div>
+  <div class="start-item" data-open="resume">📄 My Documents</div>
+  <div class="start-item" data-open="contact">🌐 Internet Explorer</div>
+  <div class="start-item" data-open="recyclebin">🗑️ Recycle Bin</div>
+</div>
+
+<script>
+  // ---- sound (simple synthesized beeps, no external files) ----
+  let soundOn = true;
+  let audioCtx = null;
+  function beep(freq, dur) {
+    if (!soundOn) return;
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.frequency.value = freq;
+      o.type = 'sine';
+      g.gain.value = 0.05;
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start();
+      g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
+      o.stop(audioCtx.currentTime + dur);
+    } catch (e) {}
+  }
+  document.getElementById('sound-toggle').addEventListener('click', () => {
+    soundOn = !soundOn;
+    document.getElementById('sound-toggle').textContent = soundOn ? '🔊' : '🔇';
+    beep(500, 0.08);
+  });
+
+  // ---- clock ----
+  function updateClock() {
+    const d = new Date();
+    let h = d.getHours();
+    const m = d.getMinutes().toString().padStart(2, '0');
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    document.getElementById('clock').textContent = `${h}:${m} ${ampm}`;
+  }
+  updateClock();
+  setInterval(updateClock, 15000);
+
+  // ---- window management ----
+  const winIds = ['about', 'resume', 'contact', 'recyclebin'];
+  const winTitles = {
+    about: 'My Computer — Properties',
+    resume: 'Resume.txt — Notepad',
+    contact: 'Contact — Internet Explorer',
+    recyclebin: 'Recycle Bin'
+  };
+  let zTop = 10;
+  let activeWin = 'about';
+
+  function bringToFront(id) {
+    const el = document.getElementById('win-' + id);
+    zTop += 1;
+    el.style.zIndex = zTop;
+    activeWin = id;
+    winIds.forEach(w => {
+      document.querySelector(`#win-${w} .titlebar`).classList.toggle('active', w === id);
+      document.querySelector(`#win-${w} .titlebar`).classList.toggle('inactive', w !== id);
+      const t = document.querySelector(`.task-item[data-task="${w}"]`);
+      if (t) t.classList.toggle('active', w === id && !document.getElementById('win-' + w).classList.contains('closed'));
+    });
+  }
+
+  function openWin(id) {
+    const el = document.getElementById('win-' + id);
+    el.classList.remove('closed');
+    beep(700, 0.06);
+    bringToFront(id);
+    renderTaskItems();
+  }
+
+  function closeWin(id) {
+    document.getElementById('win-' + id).classList.add('closed');
+    beep(300, 0.06);
+    renderTaskItems();
+  }
+
+  function renderTaskItems() {
+    const container = document.getElementById('task-items');
+    container.innerHTML = '';
+    winIds.forEach(id => {
+      const el = document.getElementById('win-' + id);
+      if (!el.classList.contains('closed')) {
+        const item = document.createElement('div');
+        item.className = 'task-item' + (id === activeWin ? ' active' : '');
+        item.dataset.task = id;
+        item.textContent = winTitles[id];
+        item.addEventListener('click', () => { openWin(id); });
+        container.appendChild(item);
+      }
+    });
+  }
+
+  document.querySelectorAll('[data-open]').forEach(el => {
+    el.addEventListener('click', () => {
+      openWin(el.dataset.open);
+      document.getElementById('start-menu').classList.remove('open');
+    });
+  });
+
+  document.querySelectorAll('.win').forEach(win => {
+    win.addEventListener('mousedown', () => bringToFront(win.id.replace('win-', '')));
+  });
+
+  document.querySelectorAll('.win-btn.close').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.closest('.win').id.replace('win-', '');
+      closeWin(id);
+    });
+  });
+  document.querySelectorAll('.win-btn.min').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.closest('.win').id.replace('win-', '');
+      closeWin(id); // simplified: minimize behaves like close but keeps taskbar entry removed
+    });
+  });
+
+  // ---- dragging ----
+  document.querySelectorAll('.titlebar').forEach(bar => {
+    bar.addEventListener('mousedown', (e) => {
+      if (e.target.classList.contains('win-btn')) return;
+      const win = bar.closest('.win');
+      bringToFront(win.id.replace('win-', ''));
+      const startX = e.clientX, startY = e.clientY;
+      const startLeft = win.offsetLeft, startTop = win.offsetTop;
+      bar.style.cursor = 'grabbing';
+      function onMove(ev) {
+        win.style.left = (startLeft + ev.clientX - startX) + 'px';
+        win.style.top = (startTop + ev.clientY - startY) + 'px';
+      }
+      function onUp() {
+        bar.style.cursor = 'grab';
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+      }
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+  });
+
+  // ---- start menu ----
+  document.getElementById('start-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    document.getElementById('start-menu').classList.toggle('open');
+    beep(600, 0.05);
+  });
+  document.addEventListener('click', () => document.getElementById('start-menu').classList.remove('open'));
+
+  // ---- icon selection ----
+  document.querySelectorAll('.icon').forEach(icon => {
+    icon.addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
+      icon.classList.add('selected');
+    });
+  });
+
+  // init
+  document.getElementById('win-contact').style.zIndex = 5;
+  renderTaskItems();
+  bringToFront('about');
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+.menu {
+  position: absolute;
+  bottom: var(--xp-taskbar-height);
+  left: 3px;
+  width: var(--xp-start-menu-width);
+  z-index: var(--xp-z-start-menu);
+  background: var(--xp-window-bg);
+  border: 1px solid var(--xp-window-border);
+  border-radius: 6px 6px 3px 3px;
+  box-shadow: var(--xp-window-shadow);
+  overflow: hidden;
+}
+
+.header {
+  background: linear-gradient(180deg, #1958d0 0%, #2b6fdb 100%);
+  color: #fff;
+  padding: 10px 12px;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item {
+  padding: 7px 12px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.item:hover {
+  background: #2b6fdb;
+  color: #fff;
+}
