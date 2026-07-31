@@ -4,7 +4,7 @@ import { useDraggable, type DragBounds } from '../../hooks/useDraggable'
 import { useResizable } from '../../hooks/useResizable'
 import { useAppActions } from '../../hooks/useAppActions'
 import { useViewportMode } from '../../hooks/useViewportMode'
-import { TASKBAR_HEIGHT_PX, MIN_WINDOW_SIZE } from '../../utils/constants'
+import { TASKBAR_HEIGHT_PX, MIN_WINDOW_SIZE, MAXIMIZED_TEXT_SCALE } from '../../utils/constants'
 import { WindowTitlebar } from './WindowTitlebar'
 import { WindowResizeHandles } from './WindowResizeHandles'
 import styles from './Window.module.css'
@@ -66,6 +66,12 @@ export function Window({ id, title, icon, children }: WindowProps) {
   const isActive = state.focusedId === id
   const showResizeHandles = !isMobile && !isMaximized
 
+  // Maximized windows render "shrunk" (by 1/scale) and then zoom back up to the real
+  // target size, so titlebar/text/icons all enlarge together to suit the fullscreen view.
+  // Drag/resize are disabled while maximized, so this never fights the live-drag DOM
+  // mutations those hooks make directly on windowRef.
+  const scale = isMaximized ? MAXIMIZED_TEXT_SCALE : 1
+
   return (
     <div
       ref={windowRef}
@@ -73,9 +79,10 @@ export function Window({ id, title, icon, children }: WindowProps) {
       style={{
         left: win.position.x,
         top: win.position.y,
-        width: win.size.width,
-        height: win.size.height,
+        width: win.size.width / scale,
+        height: win.size.height / scale,
         zIndex: win.zIndex,
+        zoom: scale,
       }}
       onPointerDown={() => {
         if (!isActive) focusWindow(id)
