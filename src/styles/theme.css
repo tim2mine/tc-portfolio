@@ -38,14 +38,7 @@
   --xp-taskitem-active-grad: linear-gradient(180deg, #1a4fa8 0%, #123a80 100%);
   --xp-startbtn-grad: linear-gradient(180deg, #4fbf4f 0%, #2f9e2f 50%, #1f7d1f 100%);
   --xp-startmenu-header-grad: linear-gradient(180deg, #1958d0 0%, #2b6fdb 100%);
-  --xp-desktop-bg-grad: linear-gradient(
-    180deg,
-    #3a7bd5 0%,
-    #6ea8e8 35%,
-    #8fc4e8 55%,
-    #cde8b0 75%,
-    #6fae3e 100%
-  );
+  --xp-desktop-bg: url('/images/wallpaper-bliss.jpg') center bottom / cover no-repeat, #3a7bd5;
 }
 
 /* ---- Skin: Silver ---- */
@@ -65,7 +58,7 @@
   --xp-taskitem-grad: linear-gradient(180deg, #9199a3 0%, #767c86 100%);
   --xp-taskitem-active-grad: linear-gradient(180deg, #5a5f68 0%, #40444c 100%);
   --xp-startmenu-header-grad: linear-gradient(180deg, #7c828d 0%, #8b909a 100%);
-  --xp-desktop-bg-grad: linear-gradient(
+  --xp-desktop-bg: linear-gradient(
     180deg,
     #6a7078 0%,
     #8b909a 35%,
@@ -92,7 +85,7 @@
   --xp-taskitem-grad: linear-gradient(180deg, #8ea45f 0%, #6f8a44 100%);
   --xp-taskitem-active-grad: linear-gradient(180deg, #4c6427 0%, #384c1c 100%);
   --xp-startmenu-header-grad: linear-gradient(180deg, #74903f 0%, #8fa85e 100%);
-  --xp-desktop-bg-grad: linear-gradient(
+  --xp-desktop-bg: linear-gradient(
     180deg,
     #5a7530 0%,
     #74903f 35%,

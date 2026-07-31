@@ -20,7 +20,7 @@ body {
 }
 
 body {
-  background: var(--xp-desktop-bg-grad);
+  background: var(--xp-desktop-bg);
   position: relative;
   user-select: none;
 }
