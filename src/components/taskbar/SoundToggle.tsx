@@ -8,7 +8,7 @@ export function SoundToggle() {
       role="button"
       tabIndex={0}
       title="Toggle sound"
-      style={{ cursor: 'pointer', fontSize: 13 }}
+      style={{ cursor: 'pointer', fontSize: 16 }}
       onClick={toggleMuted}
     >
       {muted ? '🔇' : '🔊'}

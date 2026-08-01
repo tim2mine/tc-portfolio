@@ -13,15 +13,15 @@
 }
 
 .startBtn {
-  height: 24px;
-  padding: 0 12px 0 6px;
+  height: 34px;
+  padding: 0 14px 0 8px;
   margin-right: 6px;
   background: var(--xp-startbtn-grad);
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: #fff;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 16px;
   font-style: italic;
   display: flex;
   align-items: center;
@@ -37,7 +37,7 @@
   flex: 1;
   display: flex;
   gap: 4px;
-  height: 24px;
+  height: 34px;
   overflow: hidden;
 }
 
@@ -49,11 +49,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  height: 24px;
+  height: 34px;
   background: var(--xp-tray-grad);
   border-left: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0 10px;
+  padding: 0 12px;
   border-radius: 3px 0 0 3px;
   color: #fff;
-  font-size: 11px;
+  font-size: 13px;
 }

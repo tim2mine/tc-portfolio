@@ -3,17 +3,17 @@
   border: 1px solid #0c3a94;
   border-radius: 3px;
   color: #fff;
-  font-size: 11px;
-  padding: 0 10px;
+  font-size: 13px;
+  padding: 0 12px;
   display: flex;
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  max-width: 150px;
+  max-width: 170px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  height: 24px;
+  height: 34px;
 }
 
 .item.active {
