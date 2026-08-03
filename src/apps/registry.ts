@@ -108,7 +108,7 @@ const staticApps: AppConfig[] = [
     icon: '🎨',
     iconLabel: 'Paint',
     defaultPosition: { x: 500, y: 260 },
-    defaultSize: { width: 320, height: 220 },
+    defaultSize: { width: 340, height: 360 },
     component: PaintWindow,
     showOnDesktop: true,
     showInStartMenu: true,
