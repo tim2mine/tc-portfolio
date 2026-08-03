@@ -137,6 +137,7 @@ export function TerminalWindow() {
         <input
           ref={inputRef}
           className={styles.termInput}
+          style={{ width: `${Math.max(inputValue.length, 1)}ch` }}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
