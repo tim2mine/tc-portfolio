@@ -1,3 +1,51 @@
+.biosScreen {
+  position: fixed;
+  inset: 0;
+  z-index: var(--xp-z-boot);
+  background: #000;
+  color: #d8d8d8;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.55;
+  padding: 48px 64px;
+  cursor: pointer;
+  white-space: pre;
+  animation: flicker 0.5s ease-out;
+}
+
+.biosLine {
+  animation: lineIn 0.08s ease-out;
+}
+
+@keyframes lineIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: #d8d8d8;
+  vertical-align: text-bottom;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
 .screen {
   position: fixed;
   inset: 0;
@@ -74,4 +122,23 @@
   color: #45608f;
   font-size: 11px;
   margin-top: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .biosScreen,
+  .screen {
+    animation: none;
+  }
+
+  .biosLine {
+    animation: none;
+  }
+
+  .cursor {
+    animation: none;
+  }
+
+  .barFill {
+    animation: none;
+  }
 }

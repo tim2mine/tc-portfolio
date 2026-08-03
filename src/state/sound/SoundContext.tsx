@@ -9,6 +9,7 @@ export interface SoundContextValue {
   playClose: () => void
   playStartupChime: () => void
   playError: () => void
+  playPOSTBeep: () => void
 }
 
 export const SoundContext = createContext<SoundContextValue | null>(null)
@@ -36,6 +37,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       playClose: () => soundEngine.playClose(),
       playStartupChime: () => soundEngine.playStartupChime(),
       playError: () => soundEngine.playError(),
+      playPOSTBeep: () => soundEngine.playPOSTBeep(),
     }),
     [muted, toggleMuted],
   )

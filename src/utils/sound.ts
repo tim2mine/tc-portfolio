@@ -79,6 +79,10 @@ class SoundEngine {
     this.tone(220, 0.18, { type: 'square', gain: 0.06 })
     setTimeout(() => this.tone(160, 0.25, { type: 'square', gain: 0.06 }), 180)
   }
+
+  playPOSTBeep() {
+    this.tone(800, 0.12, { type: 'square', gain: 0.05 })
+  }
 }
 
 export const soundEngine = new SoundEngine()
