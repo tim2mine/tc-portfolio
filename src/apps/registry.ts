@@ -7,6 +7,7 @@ import { WinampWindow } from './winamp/WinampWindow'
 import { CCleanerWindow } from './ccleaner/CCleanerWindow'
 import { OutlookWindow } from './outlook/OutlookWindow'
 import { PaintWindow } from './paint/PaintWindow'
+import { TerminalWindow } from './terminal/TerminalWindow'
 import { createProjectFolderWindow } from './projects/ProjectFolderWindow'
 import { projects } from '../content/projects'
 import type { AppConfig } from './types'
@@ -108,6 +109,17 @@ const staticApps: AppConfig[] = [
     defaultPosition: { x: 500, y: 260 },
     defaultSize: { width: 320, height: 220 },
     component: PaintWindow,
+    showOnDesktop: true,
+    showInStartMenu: true,
+  },
+  {
+    id: 'terminal',
+    title: 'C:\\WINDOWS\\system32\\cmd.exe',
+    icon: '/icons/terminal.svg',
+    iconLabel: 'Terminal',
+    defaultPosition: { x: 180, y: 100 },
+    defaultSize: { width: 620, height: 400 },
+    component: TerminalWindow,
     showOnDesktop: true,
     showInStartMenu: true,
   },
