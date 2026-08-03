@@ -48,3 +48,16 @@
 .fileDescription {
   color: #555;
 }
+
+.shortcut {
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.shortcut:hover {
+  background: rgba(49, 106, 197, 0.12);
+}
+
+.shortcut:hover .fileName {
+  text-decoration: underline;
+}

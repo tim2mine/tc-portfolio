@@ -9,6 +9,7 @@ export const projects: Project[] = [
     role: '[System Admin]',
     stack: '[Proxmox, Docker, pfSense, Nginx]',
     files: [],
+    linkedApps: ['network-places'],
   },
   {
     slug: 'project-two',

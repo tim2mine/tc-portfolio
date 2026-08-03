@@ -78,6 +78,7 @@ export interface Project {
   role: string
   stack: string
   files: ProjectFile[]
+  linkedApps?: string[]
 }
 
 export interface NetworkPlace {

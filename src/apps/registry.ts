@@ -132,8 +132,8 @@ const staticApps: AppConfig[] = [
     defaultPosition: { x: 260, y: 160 },
     defaultSize: { width: 380, height: 300 },
     component: NetworkPlacesWindow,
-    showOnDesktop: true,
-    showInStartMenu: true,
+    showOnDesktop: false,
+    showInStartMenu: false,
   },
 ]
 
