@@ -1,5 +1,6 @@
 import { useEffect, useRef, type RefObject } from 'react'
 import type { Point, Size } from '../state/windowManager/types'
+import { computeResizeScale } from '../utils/windowScale'
 
 export type ResizeDirection = 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw'
 
@@ -11,10 +12,28 @@ export interface UseResizableOptions {
   maxBottom: number
   onResizeEnd: (position: Point, size: Size) => void
   disabled?: boolean
+  /** Content wrapper to keep visually scaled up to `size` as it's live-resized. */
+  contentRef?: RefObject<HTMLElement | null>
+  defaultSize?: Size
 }
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), Math.max(min, max))
+}
+
+// Mutated in the same tick as the target's own width/height below, so the content
+// wrapper's scale never drifts out of sync with the live-dragged box for even a frame.
+function applyContentScale(
+  contentRef: RefObject<HTMLElement | null> | undefined,
+  defaultSize: Size | undefined,
+  size: Size,
+) {
+  const content = contentRef?.current
+  if (!content || !defaultSize) return
+  const scale = computeResizeScale(size, defaultSize)
+  content.style.width = `${size.width / scale}px`
+  content.style.height = `${size.height / scale}px`
+  content.style.transform = `scale(${scale})`
 }
 
 /**
@@ -78,6 +97,7 @@ export function useResizable(
         target!.style.top = `${position.y}px`
         target!.style.width = `${size.width}px`
         target!.style.height = `${size.height}px`
+        applyContentScale(optionsRef.current.contentRef, optionsRef.current.defaultSize, size)
       }
 
       function onPointerUp(ev: PointerEvent) {

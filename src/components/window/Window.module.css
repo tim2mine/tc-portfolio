@@ -15,6 +15,13 @@
   display: none;
 }
 
+.zoomWrap {
+  display: flex;
+  flex-direction: column;
+  transform-origin: top left;
+  overflow: hidden;
+}
+
 :root[data-viewport='mobile'] .win {
   left: 0 !important;
   top: 0 !important;

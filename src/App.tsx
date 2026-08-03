@@ -25,7 +25,13 @@ function DesktopShell() {
       {appRegistry.map((app) => {
         const Content = app.component
         return (
-          <Window key={app.id} id={app.id} title={app.title} icon={app.icon}>
+          <Window
+            key={app.id}
+            id={app.id}
+            title={app.title}
+            icon={app.icon}
+            defaultSize={app.defaultSize}
+          >
             <Content />
           </Window>
         )
