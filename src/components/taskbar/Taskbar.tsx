@@ -3,6 +3,7 @@ import { useWindowManager } from '../../state/windowManager/useWindowManager'
 import { useAppActions } from '../../hooks/useAppActions'
 import { useSound } from '../../hooks/useSound'
 import { TaskbarButton } from './TaskbarButton'
+import { ShowDesktopButton } from './ShowDesktopButton'
 import { SoundToggle } from './SoundToggle'
 import { Clock } from './Clock'
 import styles from './Taskbar.module.css'
@@ -33,6 +34,7 @@ export function Taskbar({ onToggleStartMenu }: TaskbarProps) {
       >
         <span>⊞</span> start
       </button>
+      <ShowDesktopButton />
       <div className={styles.taskItems}>
         {openIds.map((id) => {
           const app = appRegistryById[id]

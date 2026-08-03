@@ -1,0 +1,18 @@
+.showDesktop {
+  height: 34px;
+  width: 34px;
+  margin-right: 6px;
+  background: var(--xp-taskitem-grad);
+  border: 1px solid #0c3a94;
+  border-radius: 3px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.showDesktop:hover {
+  filter: brightness(1.1);
+}

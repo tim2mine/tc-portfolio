@@ -1,0 +1,47 @@
+.calendar {
+  position: absolute;
+  bottom: var(--xp-taskbar-height);
+  right: 3px;
+  z-index: var(--xp-z-start-menu);
+  background: var(--xp-window-bg);
+  border: 1px solid var(--xp-window-border);
+  border-radius: 6px 6px 3px 3px;
+  box-shadow: var(--xp-window-shadow);
+  padding: 8px;
+  width: 200px;
+}
+
+.header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.dayLabel {
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+.day {
+  text-align: center;
+  font-size: 11px;
+  color: #222;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.today {
+  background: var(--xp-titlebar-active-grad);
+  color: #fff;
+  font-weight: bold;
+}
