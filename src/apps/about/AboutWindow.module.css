@@ -31,7 +31,9 @@
 }
 
 .label {
-  width: 130px;
+  width: 150px;
+  flex-shrink: 0;
+  white-space: nowrap;
   color: #444;
   font-weight: bold;
 }
