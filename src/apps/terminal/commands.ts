@@ -15,6 +15,7 @@ export const NAV_ALIASES: Record<string, string> = {
   contact: 'contact',
   trash: 'recyclebin',
   music: 'winamp',
+  network: 'network-places',
 }
 
 export function formatResume(content: ResumeContent = resumeContent): string {

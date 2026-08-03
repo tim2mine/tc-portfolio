@@ -1,0 +1,56 @@
+.menubar {
+  background: var(--xp-window-bg);
+  font-size: 11px;
+  padding: 3px 6px;
+  border-bottom: 1px solid var(--xp-menubar-border);
+  display: flex;
+  gap: 14px;
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+  padding: 14px;
+  background: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 84px);
+  gap: 8px;
+}
+
+.place {
+  width: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 4px;
+  border-radius: 3px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+.place:hover,
+.place:focus-visible {
+  background: rgba(49, 106, 197, 0.12);
+  outline: 1px dotted #316ac5;
+}
+
+.glyph {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  color: #222;
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.2;
+}

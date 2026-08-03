@@ -79,3 +79,10 @@ export interface Project {
   stack: string
   files: ProjectFile[]
 }
+
+export interface NetworkPlace {
+  id: string
+  label: string
+  description: string
+  icon: string
+}

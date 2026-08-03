@@ -8,6 +8,7 @@ import { CCleanerWindow } from './ccleaner/CCleanerWindow'
 import { OutlookWindow } from './outlook/OutlookWindow'
 import { PaintWindow } from './paint/PaintWindow'
 import { TerminalWindow } from './terminal/TerminalWindow'
+import { NetworkPlacesWindow } from './network-places/NetworkPlacesWindow'
 import { createProjectFolderWindow } from './projects/ProjectFolderWindow'
 import { projects } from '../content/projects'
 import type { AppConfig } from './types'
@@ -120,6 +121,17 @@ const staticApps: AppConfig[] = [
     defaultPosition: { x: 180, y: 100 },
     defaultSize: { width: 620, height: 400 },
     component: TerminalWindow,
+    showOnDesktop: true,
+    showInStartMenu: true,
+  },
+  {
+    id: 'network-places',
+    title: 'Network Services',
+    icon: '/icons/network-services.svg',
+    iconLabel: 'Network Services',
+    defaultPosition: { x: 260, y: 160 },
+    defaultSize: { width: 380, height: 300 },
+    component: NetworkPlacesWindow,
     showOnDesktop: true,
     showInStartMenu: true,
   },

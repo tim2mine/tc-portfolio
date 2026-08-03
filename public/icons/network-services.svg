@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <defs>
+    <linearGradient id="device-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c6c9ce" />
+      <stop offset="12%" stop-color="#a7abb1" />
+      <stop offset="55%" stop-color="#7c828d" />
+      <stop offset="100%" stop-color="#565b63" />
+    </linearGradient>
+    <linearGradient id="device-shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5" />
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <radialGradient id="led-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c8ffc8" />
+      <stop offset="45%" stop-color="#5fdc5f" />
+      <stop offset="100%" stop-color="#2fa62f" stop-opacity="0.2" />
+    </radialGradient>
+    <filter id="device-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+    <filter id="slot-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.5" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g filter="url(#device-shadow)">
+    <rect x="10" y="15" width="180" height="130" rx="24" fill="url(#device-body)" />
+    <rect x="10" y="15" width="180" height="130" rx="24" fill="url(#device-shine)" />
+    <rect
+      x="11"
+      y="16"
+      width="178"
+      height="128"
+      rx="23"
+      fill="none"
+      stroke="#3f434a"
+      stroke-opacity="0.5"
+      stroke-width="2"
+    />
+
+    <circle cx="40" cy="80" r="13" fill="url(#led-glow)" />
+    <circle cx="40" cy="80" r="5" fill="#eaffea" />
+
+    <g filter="url(#slot-shadow)">
+      <rect x="122" y="55" width="10" height="50" rx="4" fill="#3f434a" opacity="0.55" />
+      <rect x="139" y="55" width="10" height="50" rx="4" fill="#3f434a" opacity="0.55" />
+      <rect x="156" y="55" width="10" height="50" rx="4" fill="#3f434a" opacity="0.55" />
+      <rect x="173" y="55" width="10" height="50" rx="4" fill="#3f434a" opacity="0.55" />
+    </g>
+  </g>
+</svg>
