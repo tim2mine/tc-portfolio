@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160">
+  <defs>
+    <clipPath id="term-frame">
+      <rect x="0" y="0" width="200" height="160" rx="22" ry="22" />
+    </clipPath>
+    <linearGradient id="term-titlebar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5aa3f5" />
+      <stop offset="10%" stop-color="#2b6fdb" />
+      <stop offset="50%" stop-color="#1958d0" />
+      <stop offset="100%" stop-color="#0f45b8" />
+    </linearGradient>
+    <linearGradient id="term-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c2c2c" />
+      <stop offset="100%" stop-color="#141414" />
+    </linearGradient>
+    <linearGradient id="term-chrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#d3ddea" />
+    </linearGradient>
+    <radialGradient id="term-shine" cx="50%" cy="0%" r="75%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <filter id="term-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+    <filter id="term-icon-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <g filter="url(#term-icon-shadow)">
+    <g clip-path="url(#term-frame)">
+      <rect x="0" y="0" width="200" height="160" fill="url(#term-body)" />
+      <rect x="0" y="0" width="200" height="36" fill="url(#term-titlebar)" />
+      <rect x="0" y="34" width="200" height="2" fill="#0a3078" />
+      <rect x="0" y="0" width="200" height="90" fill="url(#term-shine)" />
+    </g>
+    <rect
+      x="1"
+      y="1"
+      width="198"
+      height="158"
+      rx="21"
+      ry="21"
+      fill="none"
+      stroke="#0a2a5c"
+      stroke-opacity="0.55"
+      stroke-width="1.5"
+    />
+  </g>
+
+  <g filter="url(#term-shadow)">
+    <path
+      d="M 38 58 L 76 97 L 38 136"
+      fill="none"
+      stroke="url(#term-chrome)"
+      stroke-width="18"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <rect x="100" y="108" width="72" height="16" rx="8" fill="url(#term-chrome)" />
+  </g>
+</svg>

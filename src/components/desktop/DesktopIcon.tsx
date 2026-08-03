@@ -1,3 +1,4 @@
+import { AppIcon } from '../common/AppIcon'
 import styles from './DesktopIcon.module.css'
 
 export interface DesktopIconProps {
@@ -22,7 +23,9 @@ export function DesktopIcon({ icon, label, selected, onSelect, onOpen }: Desktop
         onOpen()
       }}
     >
-      <div className={styles.glyph}>{icon}</div>
+      <div className={styles.glyph}>
+        <AppIcon icon={icon} size={44} />
+      </div>
       <div className={styles.label}>{label}</div>
     </button>
   )

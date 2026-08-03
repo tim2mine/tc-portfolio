@@ -1,3 +1,4 @@
+import { AppIcon } from '../common/AppIcon'
 import styles from './TaskbarButton.module.css'
 
 export interface TaskbarButtonProps {
@@ -14,7 +15,9 @@ export function TaskbarButton({ icon, title, active, onClick }: TaskbarButtonPro
       className={`${styles.item} ${active ? styles.active : ''}`}
       onClick={onClick}
     >
-      <span>{icon}</span>
+      <span>
+        <AppIcon icon={icon} size={16} />
+      </span>
       <span>{title}</span>
     </button>
   )

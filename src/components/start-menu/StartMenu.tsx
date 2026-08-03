@@ -2,6 +2,7 @@ import { appRegistry } from '../../apps/registry'
 import { aboutContent } from '../../content/about'
 import { useAppActions } from '../../hooks/useAppActions'
 import { useClickOutside } from '../../hooks/useClickOutside'
+import { AppIcon } from '../common/AppIcon'
 import styles from './StartMenu.module.css'
 
 export interface StartMenuProps {
@@ -29,7 +30,10 @@ export function StartMenu({ onClose }: StartMenuProps) {
               onClose()
             }}
           >
-            <span>{app.icon}</span> {app.iconLabel}
+            <span>
+              <AppIcon icon={app.icon} size={16} />
+            </span>{' '}
+            {app.iconLabel}
           </button>
         ))}
     </div>

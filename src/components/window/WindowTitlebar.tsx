@@ -1,4 +1,5 @@
 import { forwardRef, type MouseEvent } from 'react'
+import { AppIcon } from '../common/AppIcon'
 import { WindowButton } from './WindowButton'
 import styles from './WindowTitlebar.module.css'
 
@@ -30,7 +31,9 @@ export const WindowTitlebar = forwardRef<HTMLDivElement, WindowTitlebarProps>(
         className={`${styles.titlebar} ${active ? '' : styles.inactive} ${maximized ? styles.maximized : ''}`}
         onDoubleClick={handleDoubleClick}
       >
-        <span className={styles.icon}>{icon}</span>
+        <span className={styles.icon}>
+          <AppIcon icon={icon} size={16} />
+        </span>
         <span className={styles.text}>{title}</span>
         <WindowButton variant="min" label="Minimize" symbol="_" onClick={onMinimize} />
         {onMaximize && (

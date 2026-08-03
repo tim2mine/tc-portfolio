@@ -20,7 +20,7 @@
 .glyph {
   width: 64px;
   height: 64px;
-  margin-bottom: 4px;
+  margin-bottom: 1px;
   display: flex;
   align-items: center;
   justify-content: center;
