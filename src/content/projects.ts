@@ -27,7 +27,7 @@ export const projects: Project[] = [
       {
         name: 'luna-design-system.html',
         description: 'Visual design reference: color, typography, and icon system',
-        href: 'https://tc-portfolio-one.vercel.app/luna-design-system.html',
+        href: 'https://timothycatalano.dev/luna-design-system.html',
       },
     ],
   },
