@@ -45,6 +45,14 @@
   color: #1958d0;
 }
 
+a.fileName {
+  text-decoration: none;
+}
+
+a.fileName:hover {
+  text-decoration: underline;
+}
+
 .fileDescription {
   color: #555;
 }

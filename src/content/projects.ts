@@ -12,14 +12,23 @@ export const projects: Project[] = [
     linkedApps: ['network-places'],
   },
   {
-    slug: 'project-two',
-    name: '[TODO: Second Project Name]',
-    summary: '[TODO: one-paragraph summary of the project — what it is, what problem it solves]',
-    role: '[TODO: your role]',
-    stack: '[TODO: tech stack]',
+    slug: 'xp-luna-portfolio',
+    name: 'XP:Luna Portfolio',
+    summary:
+      "This site — a Windows XP 'Luna' desktop rebuilt as a portfolio, with draggable windows, a working Start menu and taskbar, a BIOS boot sequence, and a real Terminal you can type commands into. Built on a plugin-style architecture where every app is a self-contained registry entry, so new features never touch the shared window manager.",
+    role: 'Designer & Developer',
+    stack: 'React, TypeScript, Vite',
     files: [
-      { name: 'overview.txt', description: '[TODO: brief write-up]' },
-      { name: 'screenshot-01.png', description: '[TODO: screenshot placeholder]' },
+      {
+        name: 'CASE-STUDY.md',
+        description: 'Technical write-up: architecture, build timeline, and design decisions',
+        href: 'https://github.com/tim2mine/tc-portfolio/blob/master/CASE-STUDY.md',
+      },
+      {
+        name: 'luna-design-system.html',
+        description: 'Visual design reference: color, typography, and icon system',
+        href: 'https://tc-portfolio-one.vercel.app/luna-design-system.html',
+      },
     ],
   },
 ]

@@ -69,6 +69,7 @@ export interface TestimonialsContent {
 export interface ProjectFile {
   name: string
   description: string
+  href?: string
 }
 
 export interface Project {

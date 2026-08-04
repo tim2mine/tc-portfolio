@@ -40,7 +40,18 @@ export function createProjectFolderWindow(project: Project): ComponentType {
         {project.files.map((file) => (
           <div key={file.name} className={styles.file}>
             <span className={styles.fileIcon}>📄</span>
-            <span className={styles.fileName}>{file.name}</span>
+            {file.href ? (
+              <a
+                className={styles.fileName}
+                href={file.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {file.name}
+              </a>
+            ) : (
+              <span className={styles.fileName}>{file.name}</span>
+            )}
             <span className={styles.fileDescription}>— {file.description}</span>
           </div>
         ))}
