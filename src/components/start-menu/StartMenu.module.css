@@ -4,7 +4,7 @@
   left: 3px;
   width: var(--xp-start-menu-width);
   z-index: var(--xp-z-start-menu);
-  background: var(--xp-window-bg);
+  background: #e3edfa;
   border: 1px solid var(--xp-window-border);
   border-radius: 6px 6px 3px 3px;
   box-shadow: var(--xp-window-shadow);
