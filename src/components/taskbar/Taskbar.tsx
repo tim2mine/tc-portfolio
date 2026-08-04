@@ -32,7 +32,19 @@ export function Taskbar({ onToggleStartMenu }: TaskbarProps) {
           playClick()
         }}
       >
-        <span>⊞</span> start
+        <svg
+          className={styles.startFlag}
+          viewBox="0 0 20 20"
+          width="18"
+          height="18"
+          aria-hidden="true"
+        >
+          <rect x="1" y="1" width="8.5" height="8.5" rx="1" fill="#f0401c" />
+          <rect x="10.5" y="1" width="8.5" height="8.5" rx="1" fill="#7cbb00" />
+          <rect x="1" y="10.5" width="8.5" height="8.5" rx="1" fill="#00a4ef" />
+          <rect x="10.5" y="10.5" width="8.5" height="8.5" rx="1" fill="#ffb900" />
+        </svg>
+        <span className={styles.startLabel}>start</span>
       </button>
       <ShowDesktopButton />
       <div className={styles.taskItems}>

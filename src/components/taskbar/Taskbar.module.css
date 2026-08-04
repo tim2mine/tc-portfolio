@@ -13,24 +13,59 @@
 }
 
 .startBtn {
+  position: relative;
   height: 34px;
-  padding: 0 14px 0 8px;
+  padding: 0 16px 0 6px;
   margin-right: 6px;
   background: var(--xp-startbtn-grad);
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  border: 1.5px solid #175e17;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    1px 1px 3px rgba(0, 0, 0, 0.35);
   color: #fff;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 17px;
   font-style: italic;
+  font-family: var(--xp-font-stack);
+  letter-spacing: -0.01em;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   cursor: pointer;
+  overflow: hidden;
+}
+
+.startBtn::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  right: 5px;
+  height: 42%;
+  border-radius: 999px 999px 60% 60%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.startFlag {
+  flex-shrink: 0;
+  position: relative;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+.startLabel {
+  position: relative;
 }
 
 .startBtn:hover {
   filter: brightness(1.08);
+}
+
+.startBtn:active {
+  filter: brightness(0.95);
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .taskItems {

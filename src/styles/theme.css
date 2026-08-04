@@ -36,7 +36,14 @@
   --xp-tray-grad: linear-gradient(180deg, #1049a8 0%, #0c3a8a 100%);
   --xp-taskitem-grad: linear-gradient(180deg, #3f7fd4 0%, #2a5fb8 100%);
   --xp-taskitem-active-grad: linear-gradient(180deg, #1a4fa8 0%, #123a80 100%);
-  --xp-startbtn-grad: linear-gradient(180deg, #4fbf4f 0%, #2f9e2f 50%, #1f7d1f 100%);
+  --xp-startbtn-grad: linear-gradient(
+    180deg,
+    #8fe27a 0%,
+    #4fbf4f 16%,
+    #2f9e2f 55%,
+    #1f7d1f 85%,
+    #2a8f2a 100%
+  );
   --xp-startmenu-header-grad: linear-gradient(180deg, #1958d0 0%, #2b6fdb 100%);
   --xp-desktop-bg: url('/images/wallpaper-bliss.jpg') center bottom / cover no-repeat, #3a7bd5;
 }
