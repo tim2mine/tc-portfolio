@@ -48,7 +48,11 @@ That pattern paid off directly during the build: six apps — Winamp, CCleaner, 
 
 **Homelab** — a real project case study (systems administration work: Proxmox, Docker, pfSense, TrueNAS, Nginx Proxy Manager) that includes a "Network Services" shortcut showing each service's real logo, deep-linking back into the case study.
 
+**XP:Luna Portfolio** — the site documenting itself: a second project folder that *is* this project, with two real linked files inside it — this case study and a separately-published visual design reference (color, typography, icon system) — each opening in a new tab from inside the desktop metaphor.
+
 **Blue Screen of Death** — the site's central easter egg, triggered from the Recycle Bin, rendered as an authentically deadpan fake crash screen.
+
+**The Start button** — hand-built rather than borrowed: a full pill shape with a glossy highlight band and a small four-color flag icon built from scratch as plain SVG rectangles (an original recreation in the spirit of the real thing, not a traced logo) — the same approach used for the Terminal and Network Services icons.
 
 ## How It Was Built
 
@@ -71,6 +75,8 @@ The build moved in clear phases, visible in the commit history:
 
 ## Current Status
 
+The site is live at [timothycatalano.dev](https://timothycatalano.dev), deployed on Vercel, with the source repository public on GitHub.
+
 Most of the desktop is real, filled-in content. A few sections are still placeholders, by design rather than oversight — this is a living site, not a frozen deliverable:
 
 - **Résumé** — not yet written in.
@@ -78,4 +84,4 @@ Most of the desktop is real, filled-in content. A few sections are still placeho
 - **Contact** — email is real; LinkedIn, GitHub, and the browser address bar are still placeholder.
 - **Paint** — currently a preview image with a "coming soon" pixel-art gallery behind it.
 
-Everything else — About, the Terminal, the Homelab case study, the boot sequence, the skin system, the taskbar — is finished and live.
+Everything else — About, the Terminal, the Homelab and XP:Luna Portfolio case studies, the boot sequence, the skin system, the taskbar — is finished and live.
